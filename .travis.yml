@@ -9,3 +9,15 @@ before_install:
 script:
         - docker run -e CI=true vikumca/docker-react npm run test
 
+deploy:
+        provide: elasticbeanstalk
+        region: "ap-south-1"
+        app: "docker-react"
+        env: "DockerReact-env"
+        bucket_name: "elasticbeanstalk-ap-south-1-132982219307"
+        bucket_path: "docker-react"
+        on:
+                branch: master
+access_key_id: $Access_Key
+secret_access_key: $Secret_Key
+
