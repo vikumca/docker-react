@@ -10,15 +10,15 @@ script:
         - docker run -e CI=true vikumca/docker-react npm run test
 
 deploy:
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key: $AWS_SECRET_KEY
         provider: elasticbeanstalk
         region: "ap-south-1"
         app: "docker-react"
         env: "DockerReact-env"
         bucket_name: "elasticbeanstalk-ap-south-1-278126853435"
         bucket_path: "docker-react"
+        skip_cleanup: true
         on:
                 branch: master
-                
-access_key_id: "$AWS_ACCESS_KEY"
-secret_access_key: "$AWS_SECRET_KEY"
 
